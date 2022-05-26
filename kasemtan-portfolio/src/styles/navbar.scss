@@ -1,0 +1,26 @@
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  margin-left: 40px;
+  position: relative;
+
+  div {
+    position: absolute;
+    background-color: black;
+    height: 5px;
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.action-wrapper {
+  display: flex;
+  div {
+    margin: 0 10px;
+  }
+}
