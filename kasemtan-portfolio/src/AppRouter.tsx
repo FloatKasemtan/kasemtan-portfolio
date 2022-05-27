@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import AboutMe from "./pages/AboutMe";
+import Contacts from "./pages/Contacts";
 import Projects from "./pages/Projects";
 
 const AppRouter: React.FC = () => {
@@ -19,6 +20,7 @@ const AppRouter: React.FC = () => {
         <Route path="projects" element={<Projects />}>
           {/* <Route path="*" element={<Projects />} /> */}
         </Route>
+        <Route path="contacts" element={<Contacts />} />
       </Routes>
     </BrowserRouter>
   );
