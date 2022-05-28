@@ -8,11 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "gsap": "^3.10.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "sass": "^1.52.1",
-    "scrollmagic": "^2.0.8"
+    "scrollmagic": "^2.0.7",
+    "scrollmagic-plugin-gsap": "^1.0.4",
+    "scrollmagic-plugins": "^1.0.8"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

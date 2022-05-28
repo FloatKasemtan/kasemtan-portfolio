@@ -15,6 +15,12 @@
   height: 100vh;
 }
 .introduction {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
   width: 50%;
   height: 100%;
 }
@@ -25,6 +31,16 @@
 }
 .slide-in {
   transform: translateX(0%);
+}
+
+.focus-word {
+  opacity: 1;
+  transition: 4s;
+}
+
+.word-visible {
+  color: rgb(101, 127, 222);
+  opacity: 1;
 }
 
 .gradient {

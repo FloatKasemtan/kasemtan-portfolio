@@ -5,7 +5,7 @@ import AboutMe from "./pages/AboutMe";
 import Contacts from "./pages/Contacts";
 import Projects from "./pages/Projects";
 
-const AppRouter: React.FC = () => {
+const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
