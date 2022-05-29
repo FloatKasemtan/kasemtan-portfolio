@@ -5,7 +5,7 @@ import AboutMe from "./pages/AboutMe";
 import Contacts from "./pages/Contacts";
 import Projects from "./pages/Projects";
 
-const AppRouter = () => {
+const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -17,10 +17,24 @@ const AppRouter = () => {
             </MainLayout>
           }
         />
-        <Route path="projects" element={<Projects />}>
+        <Route
+          path="projects"
+          element={
+            <MainLayout>
+              <Projects />
+            </MainLayout>
+          }
+        >
           {/* <Route path="*" element={<Projects />} /> */}
         </Route>
-        <Route path="contacts" element={<Contacts />} />
+        <Route
+          path="contacts"
+          element={
+            <MainLayout>
+              <Contacts />
+            </MainLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

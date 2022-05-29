@@ -1,3 +1,5 @@
+$base-color: rgb(101, 127, 222);
+
 .nav-body {
   z-index: 10;
   color: black;
@@ -14,15 +16,27 @@
   background-color: white;
 }
 
+.current-path {
+  color: $base-color;
+}
+
 .logo {
   margin-left: 40px;
   position: relative;
-
+  transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    div {
+      width: 100%;
+    }
+  }
   div {
     position: absolute;
-    background-color: rgb(101, 127, 222);
+    transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+    background-color: $base-color;
     height: 5px;
-    width: 100%;
+    width: 0%;
     border-radius: 10px;
   }
 }
@@ -31,11 +45,26 @@
   display: flex;
   margin-right: 70px;
   div {
-    margin: 0 20px;
     transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+    position: relative;
     &:hover {
       cursor: pointer;
       transform: scale(1.2);
+      div {
+        width: 100%;
+      }
+    }
+    div {
+      position: absolute;
+      transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+      background-color: $base-color;
+      height: 5px;
+      width: 0%;
+      border-radius: 10px;
     }
   }
+}
+
+.line-visible {
+  width: 100% !important;
 }

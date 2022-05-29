@@ -1,7 +1,7 @@
 import AppRouter from "./AppRouter";
 import ThemeContext from "./context/ThemeContext";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <ThemeContext>
       <AppRouter />

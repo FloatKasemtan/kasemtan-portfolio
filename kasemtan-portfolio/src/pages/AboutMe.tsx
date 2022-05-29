@@ -3,38 +3,44 @@ import "../styles/aboutme.scss";
 import * as ScrollMagic from "scrollmagic";
 import { TweenMax, TimelineMax } from "gsap"; // Also works with TweenLite and TimelineLite
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 const AboutMe: React.FC = () => {
   ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+  const { height } = useWindowDimensions();
+
   useLayoutEffect(() => {
     const controller = new ScrollMagic.Controller();
+    var tween = TweenMax.to("#line", 2, {
+      height: "100vh",
+    });
 
-    new ScrollMagic.Scene({ triggerElement: "#trigger2", duration: 300 })
-      // animate color and top border in relation to scroll position
-      .setTween("#animate2", {
-        borderTop: "30px solid white",
-        backgroundColor: "blue",
-        scale: 0.7,
-      }) // the tween durtion can be omitted and defaults to 1
-      .addIndicators({ name: "2 (duration: 300)" }) // add indicators (requires plugin)
+    new ScrollMagic.Scene({
+      duration: height,
+      triggerElement: ".line-wrapper",
+      triggerHook: "onCenter",
+    })
+      .setTween(tween)
       .addTo(controller);
 
     new ScrollMagic.Scene({
       triggerElement: ".image-wrapper",
+      offset: 200,
     })
       .setClassToggle(".profile", "slide-in")
       .addTo(controller);
 
     new ScrollMagic.Scene({
       triggerElement: ".introduction",
+      offset: 300,
     })
       .setClassToggle(".focus-word", "word-visible")
       .addTo(controller);
   }, []);
   return (
     <div className="content-body">
-      <div className="say-hello font-header">
+      <div className="say-hello flex-center font-header">
         Hi my name is
-        <br /> Kasemtan Tevasirichokchai (Float)
+        <br id="trigger" /> Kasemtan Tevasirichokchai (Float)
       </div>
       <div className="image-wrapper">
         <div className="introduction font-body">
@@ -53,15 +59,10 @@ const AboutMe: React.FC = () => {
           alt=""
         />
       </div>
-      <div id="trigger2" className="spacer s1"></div>
-      <div className="spacer s0"></div>
-      <div id="animate2" className="box1 black">
-        <p>Smurf me!</p>
-        <a href="#" className="viewsource">
-          view source
-        </a>
+
+      <div className="line-wrapper flex-jus-center">
+        <div id="line" className="line"></div>
       </div>
-      <div style={{ height: "100vh" }}></div>
     </div>
   );
 };

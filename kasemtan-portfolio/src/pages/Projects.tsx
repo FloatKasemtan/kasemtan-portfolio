@@ -1,7 +1,14 @@
 import React from "react";
+import "../styles/projects.scss";
 
 const Projects: React.FC = () => {
-  return <div>Projects</div>;
+  const projects = [];
+  return (
+    <>
+      <div className="flex-center font-header topic">My Project</div>
+      <div className="grid-container"></div>
+    </>
+  );
 };
 
 export default Projects;
