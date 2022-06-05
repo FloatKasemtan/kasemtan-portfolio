@@ -4,9 +4,10 @@ $base-color: rgb(101, 127, 222);
   z-index: 10;
   color: black;
   width: 100%;
-  height: 70px;
+  padding: 30px 0;
   position: fixed;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   transition: 1s;
@@ -21,7 +22,8 @@ $base-color: rgb(101, 127, 222);
 }
 
 .logo {
-  margin-left: 40px;
+  margin-left: 20px;
+  overflow-x: visible;
   position: relative;
   transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
   &:hover {
@@ -42,8 +44,9 @@ $base-color: rgb(101, 127, 222);
 }
 
 .nav-action-wrapper {
+  margin-right: 20px;
   display: flex;
-  margin-right: 70px;
+  align-items: center;
   div {
     transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
     position: relative;
@@ -63,6 +66,10 @@ $base-color: rgb(101, 127, 222);
       border-radius: 10px;
     }
   }
+}
+
+.action-item {
+  margin-left: 40px;
 }
 
 .line-visible {

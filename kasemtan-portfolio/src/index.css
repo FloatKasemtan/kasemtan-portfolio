@@ -1,5 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   animation: fadeIn 0.7s;
+  max-width: 100vw;
 }
 
 body {
@@ -8,8 +13,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -21,10 +24,10 @@ body {
   }
 }
 
-.font-header {
+/* .font-header {
   font-size: 60px;
   font-weight: 700;
-}
+} */
 
 .font-body {
   font-size: 40px;

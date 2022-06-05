@@ -21,7 +21,13 @@ const Navbar: React.FC = () => {
   };
   window.addEventListener("scroll", changeNavbarColor);
   return (
-    <div className={colorChange ? "nav-body visible" : "nav-body"}>
+    <div
+      className={
+        colorChange
+          ? "nav-body visible bg-white md:bg-transparent"
+          : "nav-body bg-white md:bg-transparent"
+      }
+    >
       <div className="logo" onClick={homeHandler}>
         Floaty KT{" "}
         <div

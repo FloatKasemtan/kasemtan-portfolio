@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Actions: React.FC = () => {
   const navigate = useNavigate();
@@ -12,39 +14,71 @@ const Actions: React.FC = () => {
     !window.location.pathname.includes("contacts") && navigate("/contacts");
   };
 
+  const [navbarToggle, setNavbarToggle] = useState(false);
+
   return (
-    <div className="nav-action-wrapper">
-      <div
-        onClick={projectHandler}
-        className={
-          window.location.pathname.includes("projects")
-            ? "current-path item-margin"
-            : "item-margin"
+    <>
+      <button
+        type="button"
+        onClick={() => setNavbarToggle(!navbarToggle)}
+        data-collapse-toggle="mobile-menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        style={
+          navbarToggle
+            ? { backgroundColor: "#657fde", color: "#fff" }
+            : { backgroundColor: "#fff", color: "#657fde" }
         }
+        className="md:hidden text-current border border-current hover:bg-current hover:text-white font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2  transition-all"
       >
-        Projects
-        <div
-          className={
-            window.location.pathname.includes("projects") ? "line-visible" : ""
-          }
-        />
-      </div>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
       <div
-        onClick={contactHandler}
         className={
-          window.location.pathname.includes("contacts")
-            ? "current-path item-margin"
-            : "item-margin"
+          navbarToggle
+            ? "block w-full md:block md:w-auto"
+            : "hidden md:block md:w-auto"
         }
+        id="mobile-menu"
       >
-        Contacts
-        <div
-          className={
-            window.location.pathname.includes("contacts") ? "line-visible" : ""
-          }
-        />
+        <div className="nav-action-wrapper flex-col md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+          <div
+            onClick={projectHandler}
+            className={
+              window.location.pathname.includes("projects")
+                ? "current-path action-item mb-4 md:mb-0"
+                : "action-item mb-2 md:mb-0"
+            }
+          >
+            Projects
+            <div
+              className={
+                window.location.pathname.includes("projects")
+                  ? "line-visible"
+                  : ""
+              }
+            />
+          </div>
+          <div
+            onClick={contactHandler}
+            className={
+              window.location.pathname.includes("contacts")
+                ? "current-path action-item md:mx-auto"
+                : "action-item"
+            }
+          >
+            Contacts
+            <div
+              className={
+                window.location.pathname.includes("contacts")
+                  ? "line-visible"
+                  : ""
+              }
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ $base-color: rgb(101, 127, 222);
 
 .content-body {
   width: 100%;
+  overflow-x: hidden;
 }
 .say-hello {
   height: 100vh;
@@ -21,7 +22,6 @@ $base-color: rgb(101, 127, 222);
   align-items: center;
   flex-direction: column;
   padding: 40px;
-  width: 50%;
   height: 100%;
 }
 
@@ -60,4 +60,15 @@ $base-color: rgb(101, 127, 222);
   width: 8px;
   height: 0px;
   background-color: $base-color;
+}
+
+.content1 {
+  transition: 0.5s cubic-bezier(0.56, 0.15, 0.26, 0.82);
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.pop-in {
+  transform: translateY(0%);
+  opacity: 1;
 }

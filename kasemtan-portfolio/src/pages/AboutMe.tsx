@@ -31,29 +31,35 @@ const AboutMe: React.FC = () => {
 
     new ScrollMagic.Scene({
       triggerElement: ".introduction",
-      offset: 300,
+      offset: 150,
     })
       .setClassToggle(".focus-word", "word-visible")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".introduction",
+      offset: 300,
+    })
+      .setClassToggle(".content1", "pop-in")
       .addTo(controller);
   }, []);
   return (
     <div className="content-body">
-      <div className="say-hello flex-center font-header">
+      <div className="say-hello flex-center text-2xl md:text-5xl">
         Hi my name is
         <br id="trigger" /> Kasemtan Tevasirichokchai (Float)
       </div>
-      <div className="image-wrapper">
-        <div className="introduction font-body">
+      <div className="image-wrapper flex-col-reverse md:flex-row text-2xl md:text-5xl">
+        <div className="introduction  md:w-3/6">
           <p className="me">And... This is me</p>
           <p className="content1">
-            A developer who passionate about
+            A fullstack-developer who passionate about
             <span className="focus-word"> web</span> and{" "}
             <span className="focus-word">mobile </span> application development
           </p>
         </div>
         <img
-          className="profile"
-          width="50%"
+          className="profile  md:w-3/6"
           height="100%"
           src="src/assets/profile.jpg"
           alt=""
