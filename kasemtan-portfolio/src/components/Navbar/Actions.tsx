@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-const Actions: React.FC = () => {
+const Actions: React.FC<any> = ({ navbarToggle, setNavbarToggle }) => {
   const navigate = useNavigate();
   console.log(window.location.pathname);
 
   const projectHandler = () => {
     !window.location.pathname.includes("projects") && navigate("/projects");
   };
-  const contactHandler = () => {
+  const contractHandler = () => {
     !window.location.pathname.includes("contacts") && navigate("/contacts");
   };
-
-  const [navbarToggle, setNavbarToggle] = useState(false);
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setNavbarToggle(!navbarToggle)}
+        onClick={() => {
+          setNavbarToggle(!navbarToggle);
+        }}
         data-collapse-toggle="mobile-menu"
         aria-controls="mobile-menu"
         aria-expanded="false"
@@ -60,7 +60,7 @@ const Actions: React.FC = () => {
             />
           </div>
           <div
-            onClick={contactHandler}
+            onClick={contractHandler}
             className={
               window.location.pathname.includes("contacts")
                 ? "current-path action-item md:mx-auto"

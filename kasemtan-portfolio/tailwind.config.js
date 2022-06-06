@@ -7,6 +7,7 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "#657fde",
+      slate: "#31324a",
     },
     extend: {},
   },

@@ -1,5 +1,16 @@
 $base-color: rgb(101, 127, 222);
 
+.background {
+  background-image: url("../assets/background.jpg");
+  opacity: 0.6;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
 .content-body {
   width: 100%;
   overflow-x: hidden;
@@ -11,6 +22,7 @@ $base-color: rgb(101, 127, 222);
 }
 
 .image-wrapper {
+  background-color: white;
   display: flex;
   height: 100vh;
 }
@@ -27,7 +39,7 @@ $base-color: rgb(101, 127, 222);
 
 .profile {
   object-fit: cover;
-  transform: translateX(100%);
+  // transform: translateX(100%);
   transition: 1s cubic-bezier(0.86, 0.08, 0.1, 0.91);
 }
 .slide-in {
@@ -57,13 +69,17 @@ $base-color: rgb(101, 127, 222);
 }
 
 .line {
+  border-radius: 10px;
   width: 8px;
-  height: 0px;
+  height: 20px;
   background-color: $base-color;
+  transition: 2s cubic-bezier(0.63, 0.11, 0.24, 0.64);
 }
-
+.full-grow {
+  height: 100%;
+}
 .content1 {
-  transition: 0.5s cubic-bezier(0.56, 0.15, 0.26, 0.82);
+  transition: 0.5s cubic-bezier(0.49, 0.12, 0.29, 1.54);
   transform: translateY(-100%);
   opacity: 0;
 }
