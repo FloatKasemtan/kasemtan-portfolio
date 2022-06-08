@@ -53,10 +53,10 @@ const Footer: React.FC = () => {
         </div>
         <div>
           <a
-            href="https://www.freepik.com/free-photo/beautiful-mountainous-landscape-covered-with-trees_17528293.htm#query=nature&position=6&from_view=search"
+            href="https://www.freepik.com/free-photo/green-leaves-white-background_4100627.htm#query=leave&position=22&from_view=search"
             style={{ pointerEvents: "visible" }}
           >
-            Background Designed by wirestock / Freepik
+            Background Designed by @rawpixel.com / Freepik
           </a>
         </div>
       </div>
