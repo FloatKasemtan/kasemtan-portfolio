@@ -4,14 +4,15 @@ import "../styles/projects.scss";
 const Projects: React.FC = () => {
   const projects = [];
   return (
-    <>
-      <div className="flex-center font-header topic">My Project</div>
-      <div className="grid-container h-screen">
+    <div className="min-h-screen">
+      <div className="flex-center font-header topic">My Projects & Hobbies</div>
+      <div className="grid gap-4 my-5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid-item"></div>
         <div className="grid-item"></div>
         <div className="grid-item"></div>
         <div className="grid-item"></div>
       </div>
-    </>
+    </div>
   );
 };
 

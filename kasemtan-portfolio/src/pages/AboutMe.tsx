@@ -3,7 +3,6 @@ import "../styles/aboutme.scss";
 import * as ScrollMagic from "scrollmagic";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 const AboutMe: React.FC = () => {
-  const { height } = useWindowDimensions();
   const [offsetY, setOffsetY] = useState(0);
   const handleScroll = () => setOffsetY(window.pageYOffset);
 
@@ -24,14 +23,6 @@ const AboutMe: React.FC = () => {
     //   .setClassToggle(".profile", "slide-in")
     //   .addTo(controller);
 
-    // Word visible
-    new ScrollMagic.Scene({
-      triggerElement: ".introduction",
-      offset: 150,
-    })
-      .setClassToggle(".focus-word", "word-visible")
-      .addTo(controller);
-
     new ScrollMagic.Scene({
       triggerElement: ".me",
       offset: 150,
@@ -46,6 +37,34 @@ const AboutMe: React.FC = () => {
     })
       .setClassToggle(".line", "full-grow")
       .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".education1",
+      triggerHook: "onCenter",
+    })
+      .setClassToggle(".education1", "education1-show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".education1",
+      triggerHook: "onCenter",
+    })
+      .setClassToggle(".education1-text", "education1-text-show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".education1",
+      triggerHook: "onCenter",
+    })
+      .setClassToggle(".education2", "education2-show")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".education1",
+      triggerHook: "onCenter",
+    })
+      .setClassToggle(".education2-text", "education2-text-show")
+      .addTo(controller);
   }, []);
   return (
     <div className="content-body">
@@ -54,8 +73,15 @@ const AboutMe: React.FC = () => {
           className="background"
           style={{ transform: `translateY(${offsetY * 0.5}px)` }}
         />
-        Hi my name is
-        <br /> Kasemtan Tevasirichokchai (Float)
+        <div className="say-hello-text flex flex-col items-center">
+          <img
+            className="w-48 md:w-60 mb-10"
+            src="https://cucans.in.th/wp-content/themes/cera/assets/images/avatars/user-avatar.png"
+            style={{ borderRadius: "50%" }}
+          />
+          Hi my name is
+          <br /> Kasemtan Tevasirichokchai (Float)
+        </div>
       </div>
       <div className="image-wrapper flex-col-reverse md:flex-row text-2xl md:text-3xl">
         <div className="introduction  md:w-3/6">
@@ -72,8 +98,31 @@ const AboutMe: React.FC = () => {
         />
       </div>
 
-      <div className="line-wrapper flex justify-center">
-        <div id="line" className="line" />
+      <div className="flex justify-center m-10 text-2xl">Education</div>
+      <div className="line-wrapper text-center sm:text-left sm:h-screen flex flex-col items-center text-xl">
+        <div id="line" className="line hidden sm:block" />
+        <div className="sm:h-1/4" />
+        <div className="relative">
+          <div
+            id="education"
+            className="education1 hidden sm:block absolute top-7 h-2 bg-current rounded-2xl"
+          ></div>
+        </div>
+        <div className="sm:ml-96 education1-text">
+          Graduated at <p>Sarasas Witaed Suksa School</p>
+          <p>2014-2019</p>
+        </div>
+        <div className="sm:h-1/4" />
+        <div className="relative">
+          <div
+            id="education"
+            className="education2 hidden sm:block absolute right-px top-20 h-2 bg-current rounded-2xl"
+          ></div>
+        </div>
+        <div className="sm:mr-80 my-10 education2-text">
+          Currently studying at <p>KMUTT College</p>
+          <p>2020-Present</p>
+        </div>
       </div>
     </div>
   );

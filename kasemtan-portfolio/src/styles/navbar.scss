@@ -21,7 +21,7 @@ $base-color: rgb(101, 127, 222);
   margin-left: 20px;
   overflow-x: visible;
   position: relative;
-  transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+  transition: 0.5s cubic-bezier(0.23, 0.55, 0.13, 1.22);
   &:hover {
     cursor: pointer;
     transform: scale(1.2);
@@ -31,7 +31,7 @@ $base-color: rgb(101, 127, 222);
   }
   div {
     position: absolute;
-    transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+    transition: 0.5s cubic-bezier(0.23, 0.55, 0.13, 1.22);
     background-color: $base-color;
     height: 5px;
     width: 0%;
@@ -44,7 +44,7 @@ $base-color: rgb(101, 127, 222);
   display: flex;
   align-items: center;
   div {
-    transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+    transition: 0.5s cubic-bezier(0.23, 0.55, 0.13, 1.22);
     position: relative;
     &:hover {
       cursor: pointer;
@@ -55,7 +55,7 @@ $base-color: rgb(101, 127, 222);
     }
     div {
       position: absolute;
-      transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+      transition: 0.5s cubic-bezier(0.23, 0.55, 0.13, 1.22);
       background-color: $base-color;
       height: 5px;
       width: 0%;
