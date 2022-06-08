@@ -68,6 +68,28 @@ $base-color: rgb(101, 127, 222);
   width: 100vw;
 }
 
+.ready {
+  transition: 1s;
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.ready-out {
+  transform: translateX(-30vw);
+  opacity: 0;
+}
+
+.go {
+  transition: 1s;
+  transform: translateX(30vw);
+  opacity: 0;
+}
+
+.go-visible {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
 .line {
   position: absolute;
   border-radius: 10px;
@@ -88,17 +110,6 @@ $base-color: rgb(101, 127, 222);
 .pop-in {
   transform: translateY(0%);
   opacity: 1;
-}
-
-@keyframes pop-in {
-  from {
-    opacity: 0.3;
-    transform: scale(1.6) translateY(-50%);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
 }
 
 .education1 {
@@ -139,4 +150,15 @@ $base-color: rgb(101, 127, 222);
 .education2-text-show {
   opacity: 1;
   transform: translateX(-20px);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0.3;
+    transform: scale(1.6) translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

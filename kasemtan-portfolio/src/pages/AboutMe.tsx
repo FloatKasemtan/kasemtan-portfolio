@@ -65,6 +65,22 @@ const AboutMe: React.FC = () => {
     })
       .setClassToggle(".education2-text", "education2-text-show")
       .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".set-trigger",
+      triggerHook: "onCenter",
+      offset: 200,
+    })
+      .setClassToggle(".ready", "ready-out")
+      .addTo(controller);
+
+    new ScrollMagic.Scene({
+      triggerElement: ".set-trigger",
+      triggerHook: "onCenter",
+      offset: 200,
+    })
+      .setClassToggle(".go", "go-visible")
+      .addTo(controller);
   }, []);
   return (
     <div className="content-body">
@@ -97,9 +113,15 @@ const AboutMe: React.FC = () => {
           alt="profile"
         />
       </div>
+      <div className="set-trigger flex justify-center m-10 text-2xl">
+        My Education
+      </div>
 
-      <div className="flex justify-center m-10 text-2xl">Education</div>
-      <div className="line-wrapper text-center sm:text-left sm:h-screen flex flex-col items-center text-xl">
+      <div className="hidden sm:flex justify-center m-10 text-2xl">
+        <div className="ready mt-10">Ready set......</div>
+        <div className="go mt-10 absolute">Go!</div>
+      </div>
+      <div className="line-wrapper text-left sm:h-screen flex flex-col items-center text-xl">
         <div id="line" className="line hidden sm:block" />
         <div className="sm:h-1/4" />
         <div className="relative">
