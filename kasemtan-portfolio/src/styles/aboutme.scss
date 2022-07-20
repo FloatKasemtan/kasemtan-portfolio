@@ -1,0 +1,164 @@
+$base-color: rgb(101, 127, 222);
+
+.background {
+  opacity: 0.7;
+  display: block;
+  background-image: url("../assets/background.png");
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+.content-body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.say-hello {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+.say-hello-text {
+  animation: pop-in 1s cubic-bezier(0.39, 0.66, 0.24, 1.08);
+}
+
+.image-wrapper {
+  position: relative;
+  background-color: white;
+  display: flex;
+  height: 100vh;
+}
+
+.introduction {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  height: 100%;
+}
+
+.profile {
+  object-fit: cover;
+  // transform: translateX(100%);
+  // transition: 1s cubic-bezier(0.86, 0.08, 0.1, 0.91);
+}
+.slide-in {
+  transform: translateX(0%);
+}
+
+.focus-word {
+  opacity: 1;
+  transition: 2s;
+}
+
+.gradient {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  font-size: 40px;
+}
+
+.line-wrapper {
+  width: 100vw;
+}
+
+.ready {
+  transition: 1s;
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.ready-out {
+  transform: translateX(-30vw);
+  opacity: 0;
+}
+
+.go {
+  transition: 1s;
+  transform: translateX(30vw);
+  opacity: 0;
+}
+
+.go-visible {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.line {
+  position: absolute;
+  border-radius: 10px;
+  width: 8px;
+  height: 20px;
+  background-color: $base-color;
+  transition: 2s cubic-bezier(0.63, 0.11, 0.24, 0.64);
+}
+.full-grow {
+  height: 100%;
+}
+.content1 {
+  transition: 0.5s cubic-bezier(0.49, 0.12, 0.29, 1.54);
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.pop-in {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.education1 {
+  width: 0px;
+  transition: 1s cubic-bezier(0.63, 0.11, 0.24, 0.64);
+}
+
+.education1-show {
+  width: 2.25rem;
+}
+
+.education2 {
+  width: 0px;
+  transition: 1s cubic-bezier(0.63, 0.11, 0.24, 0.64);
+}
+
+.education2-show {
+  width: 2.25rem;
+}
+
+.education1-text {
+  opacity: 0;
+  transition: 1s cubic-bezier(0.63, 0.11, 0.24, 0.64);
+  transform: translateX(100%);
+}
+
+.education1-text-show {
+  opacity: 1;
+  transform: translateX(20px);
+}
+
+.education2-text {
+  opacity: 0;
+  transition: 1s cubic-bezier(0.63, 0.11, 0.24, 0.64);
+  transform: translateX(-100%);
+}
+
+.education2-text-show {
+  opacity: 1;
+  transform: translateX(-20px);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0.3;
+    transform: scale(1.6) translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
