@@ -5,7 +5,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Actions: React.FC<any> = ({ navbarToggle, setNavbarToggle }) => {
   const navigate = useNavigate();
-  console.log(window.location.pathname);
 
   const projectHandler = () => {
     !window.location.pathname.includes("projects") && navigate("/projects");

@@ -13,8 +13,6 @@ const Navbar: React.FC = () => {
 
   const changeNavbarColor = () => {
     if (window.scrollY >= height) {
-      console.log("change");
-
       setColorchange(true);
     } else {
       setColorchange(false);
