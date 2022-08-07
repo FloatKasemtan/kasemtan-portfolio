@@ -3,6 +3,8 @@ import { ProjectCards } from "../components/Projects/ProjectCards";
 import "../styles/projects.scss";
 import { Repository } from "../types/repository";
 
+const loadingText = ["L", "O", "A", "D", "I", "N", "G", ".", ".", "."];
+
 const fetchRepos = (
   projectSetter: React.Dispatch<React.SetStateAction<Repository[]>>,
   fetchingSetter: React.Dispatch<React.SetStateAction<boolean>>,
@@ -25,12 +27,12 @@ const fetchRepos = (
       throw new Error("Github API error or limit reached");
     })
     .then((data) => {
-      if (data.length === 0) {
+      if (data.length != 12) {
         limitSetter(true);
       }
-      fetchingSetter(false);
       projectSetter([...projects, ...data]);
       pageSetter(page + 1);
+      fetchingSetter(false);
     })
     .catch((err) => {
       errorSetter(err.message);
@@ -78,9 +80,46 @@ const Projects: React.FC = () => {
   console.log(page);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* {isFetching && (
+        <div className="h-screen w-screen fixed  flex justify-center items-center">
+          <div className="fixed h-screen w-screen opacity-20 bg-black" />
+          <div className="flex">
+            {loadingText.map((char, i) => (
+              <div
+                className="animate-bounce mx-1"
+                style={{
+                  animationDelay: `${0.1 * i}s`,
+                  fontSize: "2rem",
+                  fontWeight: "bold",
+                  color: "rgb(101, 127, 222)",
+                }}
+              >
+                {char}
+              </div>
+            ))}
+          </div>
+        </div>
+      )} */}
       <div className="flex-center font-header topic">My Projects</div>
       {!isFetching && error === "" && ProjectCards(projectsData)}
+      {isFetching && (
+        <div className="flex m-16 justify-center">
+          {loadingText.map((char, i) => (
+            <div
+              className="animate-bounce mx-1"
+              style={{
+                animationDelay: `${0.1 * i}s`,
+                fontSize: "2rem",
+                fontWeight: "bold",
+                color: "rgb(101, 127, 222)",
+              }}
+            >
+              {char}
+            </div>
+          ))}
+        </div>
+      )}
       {error !== "" && <div>{error}</div>}
     </div>
   );
@@ -111,6 +150,7 @@ function intersectionObserverHandler(
       (entries) => {
         const lastElement = entries[0];
         if (lastElement.isIntersecting) {
+          lastProjectObsever.unobserve(lastElement.target);
           fetchRepos(
             setProjectsData,
             setIsFetching,
@@ -120,7 +160,6 @@ function intersectionObserverHandler(
             projectsData,
             page
           );
-          lastProjectObsever.unobserve(lastElement.target);
           lastProjectObsever.observe(
             document.querySelector(".project:last-child")!
           );

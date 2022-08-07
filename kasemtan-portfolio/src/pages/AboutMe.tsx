@@ -87,7 +87,9 @@ const AboutMe: React.FC = () => {
       <div className="say-hello flex-center text-2xl md:text-5xl">
         <div
           className="background"
-          style={{ transform: `translateY(${offsetY * 0.5}px)` }}
+          style={{
+            transform: `translateY(${offsetY * 0.2}px) scale(1.3)`,
+          }}
         />
         <div className="say-hello-text flex flex-col items-center">
           <img
