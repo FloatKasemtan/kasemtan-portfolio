@@ -9,7 +9,8 @@ export const ProjectCards = (projectsData: Repository[]) => {
           style={{ animationDelay: `${0.05 * i}s` }}
           className="project grid-item"
         >
-          {project.name}
+          <div className="text-2xl">{project.name}</div>
+          <div className="text-base">{project.description}</div>
         </div>
       ))}
     </div>
