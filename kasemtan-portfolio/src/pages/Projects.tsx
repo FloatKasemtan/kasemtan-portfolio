@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Loading } from "../components/Loading";
 import { ProjectCards } from "../components/Projects/ProjectCards";
 import "../styles/projects.scss";
