@@ -29,7 +29,6 @@ function generate() {
     "#" +
     randomColor() +
     ")";
-  console.log(gradient);
 
   return gradient;
 }
