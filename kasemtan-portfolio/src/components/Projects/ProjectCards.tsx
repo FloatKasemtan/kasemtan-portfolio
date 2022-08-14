@@ -1,27 +1,68 @@
 import { Repository } from "../../types/repository";
 
-export const ProjectCards = (projectsData: Repository[]) => {
-  console.log(projectsData[0]);
+const colorList = [
+  "eae4e9",
+  "fff1e6",
+  "fde2e4",
+  "fad2e1",
+  "e2ece9",
+  "bee1e6",
+  "f0efeb",
+  "dfe7fd",
+  "cddafd",
+];
 
+function randomColor() {
+  return colorList[Math.floor(Math.random() * colorList.length)];
+}
+
+function generate() {
+  var deg = Math.floor(Math.random() * 360);
+
+  var gradient =
+    "linear-gradient(" +
+    deg +
+    "deg, " +
+    "#" +
+    randomColor() +
+    ", " +
+    "#" +
+    randomColor() +
+    ")";
+  console.log(gradient);
+
+  return gradient;
+}
+
+export const ProjectCards = (projectsData: Repository[]) => {
   return (
     <div
+      className="break-inside-avoid-column"
       style={{
+        columnCount: "3",
+        rowGap: "1rem",
         padding: "2rem",
-        columnWidth: "320px",
         maxWidth: "1100px",
         margin: "0 auto",
-        columnFill: "unset",
       }}
     >
       {projectsData.map((project, i) => (
         <div
           key={project.id}
-          style={{ animationDelay: `${0.05 * i}s` }}
+          style={{
+            animationDelay: `${0.05 * i}s`,
+            breakInside: "avoid",
+            background: generate(),
+          }}
           className="project grid-item flex flex-col justify-between"
         >
-          <div className="text-2xl">{project.name}</div>
-          <div className="text-base ">{project.description}</div>
-          <div className="self-end text-xs">{project.language}</div>
+          <div className="text-2xl bg-sky-500/[.06]">{project.name}</div>
+          <div className="text-base bg-sky-500/[.06]">
+            {project.description}
+          </div>
+          <div className="self-end text-xs bg-sky-500/[.06]">
+            {project.language}
+          </div>
         </div>
       ))}
     </div>
