@@ -92,11 +92,6 @@ const AboutMe: React.FC = () => {
           }}
         />
         <div className="say-hello-text flex flex-col items-center">
-          <img
-            className="w-48 md:w-60 mb-10"
-            src="https://cucans.in.th/wp-content/themes/cera/assets/images/avatars/user-avatar.png"
-            style={{ borderRadius: "50%" }}
-          />
           Hi my name is
           <br /> Kasemtan Tevasirichokchai (Float)
         </div>
