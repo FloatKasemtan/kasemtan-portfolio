@@ -46,7 +46,9 @@ export const ProjectCards = (projectsData: Repository[]) => {
       }}
     >
       {projectsData.map((project, i) => (
-        <div
+        <a
+          href={project.html_url}
+          target="_blank"
           key={project.id}
           style={{
             animationDelay: `${0.05 * i}s`,
@@ -62,7 +64,7 @@ export const ProjectCards = (projectsData: Repository[]) => {
           <div className="self-end text-xs bg-sky-500/[.06]">
             {project.language}
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );
