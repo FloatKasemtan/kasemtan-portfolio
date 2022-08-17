@@ -35,16 +35,7 @@ function generate() {
 
 export const ProjectCards = (projectsData: Repository[]) => {
   return (
-    <div
-      className="break-inside-avoid-column"
-      style={{
-        columnCount: "3",
-        rowGap: "1rem",
-        padding: "2rem",
-        maxWidth: "1100px",
-        margin: "0 auto",
-      }}
-    >
+    <div className="p-10 gap-y-4 columns-1 md:columns-2 lg:columns-3 max-w-[1100px] mx-auto">
       {projectsData.map((project, i) => (
         <a
           href={project.html_url}
@@ -57,13 +48,13 @@ export const ProjectCards = (projectsData: Repository[]) => {
           }}
           className="project grid-item flex flex-col justify-between"
         >
-          <div className="text-2xl bg-sky-500/[.06]">{project.name}</div>
-          <div className="text-base bg-sky-500/[.06]">
-            {project.description}
-          </div>
-          <div className="self-end text-xs bg-sky-500/[.06]">
-            {project.language}
-          </div>
+          <div className="text-2xl ">{project.name}</div>
+          <div className="text-base p-2">{project.description}</div>
+          {project.language && (
+            <div className="self-end text-xs rounded-md py-1 px-3 bg-white">
+              {project.language}
+            </div>
+          )}
         </a>
       ))}
     </div>
