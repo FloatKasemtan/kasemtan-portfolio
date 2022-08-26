@@ -1,7 +1,8 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
 import "../styles/aboutme.scss";
 import * as ScrollMagic from "scrollmagic";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import Lottie from "lottie-react";
+import developer from "../assets/lottie/developer.json";
 const AboutMe: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
   const handleScroll = () => setOffsetY(window.pageYOffset);
@@ -103,12 +104,7 @@ const AboutMe: React.FC = () => {
             A fullstack-developer who passionate about application development
           </p>
         </div>
-        <img
-          className="profile  md:w-3/6"
-          height="100%"
-          src="src/assets/profile.jpg"
-          alt="profile"
-        />
+        <Lottie animationData={developer} loop={true} />;
       </div>
       <div className="set-trigger flex justify-center m-10 text-2xl">
         My Education
