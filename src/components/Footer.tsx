@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col">
             <a onClick={homeHandler}>Home</a>
             <a onClick={projectHandler}>Projects</a>
-            <a onClick={contractHandler}>Contracts</a>
+            <a onClick={contractHandler}>Contacts</a>
           </div>
         </div>
       </div>

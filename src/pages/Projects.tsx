@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Loading } from "../components/Loading";
-import { ProjectCards } from "../components/Projects/ProjectCards";
+import Card from "../components/Projects/Card";
 import "../styles/projects.scss";
 import { Repository } from "../types/repository";
 
@@ -15,23 +15,23 @@ const fetchRepos = async (
   setError: React.Dispatch<React.SetStateAction<any>>
 ) => {
   try {
+    console.log("page: ", page);
+    console.log("data: ", projectsData.length);
     if (!hasNoMore) {
       setIsFetching(true);
 
       const res = await fetch(
-        "https://api.github.com/users/floatkasemtan/repos?per_page=12&page=" +
+        "https://api.github.com/users/floatkasemtan/repos?per_page=6&page=" +
           page
       );
       let data = await res.json();
-      if (data.length !== 12) {
+      if (data.length !== 6) {
         setHasNoMore(true);
       }
-      setProjectsData(projectsData.concat(data));
+      setProjectsData([...projectsData, ...data]);
       setPage(page + 1);
       setIsFetching(false);
-      return data;
     }
-    return null;
   } catch (error) {
     setError("Github API error or limit reached");
     throw new Error("Github API error or limit reached");
@@ -63,37 +63,37 @@ const Projects: React.FC = () => {
 
   useEffect(() => {
     if (hasNoMore) {
-      lastProjectObsever?.unobserve(
-        document.querySelector(".project:last-child")!
-      );
+      document.querySelectorAll(".project")!.forEach((project) => {
+        lastProjectObsever?.unobserve(project);
+      });
       lastProjectObsever = null;
     }
   }, [hasNoMore]);
 
   useEffect(() => {
     if (isPageLoaded) {
-      lastProjectObsever = new IntersectionObserver(
-        (entries) => {
-          const lastElement = entries[0];
-          if (lastElement.isIntersecting) {
-            lastProjectObsever?.unobserve(lastElement.target);
-            fetchRepos(
-              page,
-              setPage,
-              projectsData,
-              setProjectsData,
-              setIsFetching,
-              hasNoMore,
-              setHasNoMore,
-              setError
-            );
-            lastProjectObsever?.observe(
-              document.querySelector(".project:last-child")!
-            );
-          }
-        },
-        { rootMargin: "200px" }
-      );
+      lastProjectObsever = new IntersectionObserver((entries) => {
+        const lastElement = entries[0];
+        if (lastElement.isIntersecting) {
+          lastProjectObsever?.unobserve(lastElement.target);
+        }
+        fetchRepos(
+          page,
+          setPage,
+          projectsData,
+          setProjectsData,
+          setIsFetching,
+          hasNoMore,
+          setHasNoMore,
+          setError
+        ).then(() => {
+          console.log(projectsData);
+
+          lastProjectObsever?.observe(
+            document.querySelector(".project:last-child")!
+          );
+        });
+      });
       lastProjectObsever.observe(
         document.querySelector(".project:last-child")!
       );
@@ -103,7 +103,13 @@ const Projects: React.FC = () => {
   return (
     <div className="min-h-screen relative lg:px-24">
       <div className="flex-center font-header topic">My Projects</div>
-      {error === "" && ProjectCards(projectsData)}
+      {error === "" && (
+        <div className="p-10 gap-y-4 columns-1 md:columns-2 lg:columns-3 max-w-[1100px] mx-auto">
+          {projectsData.map((project, i) => (
+            <Card project={project} key={i} />
+          ))}
+        </div>
+      )}
       {isFetching && Loading()}
       {error !== "" && <div>{error}</div>}
     </div>
