@@ -15,17 +15,15 @@ const fetchRepos = async (
   setError: React.Dispatch<React.SetStateAction<any>>
 ) => {
   try {
-    console.log("page: ", page);
-    console.log("data: ", projectsData.length);
     if (!hasNoMore) {
       setIsFetching(true);
 
       const res = await fetch(
-        "https://api.github.com/users/floatkasemtan/repos?per_page=6&page=" +
+        "https://api.github.com/users/floatkasemtan/repos?per_page=12&page=" +
           page
       );
       let data = await res.json();
-      if (data.length !== 6) {
+      if (data.length !== 12) {
         setHasNoMore(true);
       }
       setProjectsData([...projectsData, ...data]);
@@ -72,28 +70,31 @@ const Projects: React.FC = () => {
 
   useEffect(() => {
     if (isPageLoaded) {
-      lastProjectObsever = new IntersectionObserver((entries) => {
-        const lastElement = entries[0];
-        if (lastElement.isIntersecting) {
-          lastProjectObsever?.unobserve(lastElement.target);
-        }
-        fetchRepos(
-          page,
-          setPage,
-          projectsData,
-          setProjectsData,
-          setIsFetching,
-          hasNoMore,
-          setHasNoMore,
-          setError
-        ).then(() => {
-          console.log(projectsData);
+      lastProjectObsever = new IntersectionObserver(
+        (entries) => {
+          const lastElement = entries[0];
+          if (lastElement.isIntersecting) {
+            lastProjectObsever?.unobserve(lastElement.target);
+            fetchRepos(
+              page,
+              setPage,
+              projectsData,
+              setProjectsData,
+              setIsFetching,
+              hasNoMore,
+              setHasNoMore,
+              setError
+            ).then(() => {
+              console.log(projectsData);
 
-          lastProjectObsever?.observe(
-            document.querySelector(".project:last-child")!
-          );
-        });
-      });
+              lastProjectObsever?.observe(
+                document.querySelector(".project:last-child")!
+              );
+            });
+          }
+        },
+        { rootMargin: "200px" }
+      );
       lastProjectObsever.observe(
         document.querySelector(".project:last-child")!
       );
@@ -110,8 +111,8 @@ const Projects: React.FC = () => {
           ))}
         </div>
       )}
-      {isFetching && Loading()}
-      {error !== "" && <div>{error}</div>}
+      {isFetching && error == "" && Loading()}
+      {error !== "" && <div className="flex-center mt-20">{error}</div>}
     </div>
   );
 };
