@@ -14,7 +14,7 @@ const Contacts: React.FC = () => {
           href="mailto: work@floatykt.com"
           target="_blank"
         >
-          <img src={mailLogo}></img>
+          <img src={mailLogo} alt="Mail" />
           <div>work@floatykt.com</div>
         </a>
         <a
@@ -22,7 +22,7 @@ const Contacts: React.FC = () => {
           href="https://github.com/FloatKasemtan"
           target="_blank"
         >
-          <img src={githubLogo} alt="" />
+          <img src={githubLogo} alt="Github" />
           <div>FloatKasemtan</div>
         </a>
         <a
@@ -30,7 +30,7 @@ const Contacts: React.FC = () => {
           href="https://www.facebook.com/float.teavasirichokchai/"
           target="_blank"
         >
-          <img src={facebookLogo} alt="" />
+          <img src={facebookLogo} alt="Facebook" />
           <div>(Float) Kasemtan Tevasirichokchai</div>
         </a>
         <a
@@ -38,7 +38,7 @@ const Contacts: React.FC = () => {
           href="https://www.linkedin.com/in/kasemtan-teavasirichokchai-975531227/"
           target="_blank"
         >
-          <img src={linkedinLogo} alt="" />
+          <img src={linkedinLogo} alt="Linkedin" />
           <div>Kasemtan Tevasirichokchai</div>
         </a>
       </div>
