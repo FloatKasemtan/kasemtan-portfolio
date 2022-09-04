@@ -35,7 +35,7 @@ jobs:
           npm run build --if-present
       - name: Install packages
         run: |
-          sudo apt install -y lstp
+          apt install -y lftp
       - name: Upload artifact to server
         run: |
           lftp -e "set sftp:auto-confirm yes; open $REMOTE_SFTP_LOGIN; mirror -X ./dist/* -X .*/ --reverse; bye"
