@@ -18,8 +18,6 @@ jobs:
     #   matrix:
     #     node-version: [12.x, 14.x, 16.x]
     #     # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    env:
-      REMOTE_SFTP_LOGIN: ${{ secrets.REMOTE_SFTP_LOGIN }}
 
     steps:
       - name: Checkout
@@ -43,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     container: debian:latest
+    env:
+      REMOTE_SFTP_LOGIN: ${{ secrets.REMOTE_SFTP_LOGIN }}
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
