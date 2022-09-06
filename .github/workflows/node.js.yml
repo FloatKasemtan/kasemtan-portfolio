@@ -13,22 +13,22 @@ jobs:
   build:
     name: Build frontend
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    container: node:lts
+    # strategy:
+    #   matrix:
+    #     node-version: [12.x, 14.x, 16.x]
+    #     # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     env:
       REMOTE_SFTP_LOGIN: ${{ secrets.REMOTE_SFTP_LOGIN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      #     cache: "npm"
       - name: Building react app
         run: |
           npm i 
@@ -50,6 +50,7 @@ jobs:
           path: ./artifact
       - name: Install packages
         run: |
+          apt update
           apt install -y lftp
       - name: Upload artifact to server
         run: |
