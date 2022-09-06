@@ -111,7 +111,7 @@ const AboutMe: React.FC = () => {
       </div>
 
       <div className="hidden sm:flex justify-center m-10 text-2xl">
-        <div className="ready mt-10">Ready set......</div>
+        <div className="ready mt-10">Ready set</div>
         <div className="go mt-10 absolute">Go!</div>
       </div>
       <div className="line-wrapper text-left sm:h-screen flex flex-col items-center text-xl">
