@@ -50,7 +50,7 @@ jobs:
           path: ./artifact
       - name: Install packages
         run: |
-          apk add lftp
+          apk add openssh-client lftp
       - name: Upload artifact to server
         run: |
           lftp -d -e "set sftp:auto-confirm yes; open $REMOTE_SFTP_LOGIN; mirror --reverse --delete ./artifact/dist/ /root/vm-float/web/www/portfolio; bye"
