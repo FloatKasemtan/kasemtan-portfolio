@@ -24,9 +24,7 @@ const AppRouter: React.FC = () => {
               <Projects />
             </MainLayout>
           }
-        >
-          {/* <Route path="*" element={<Projects />} /> */}
-        </Route>
+        ></Route>
         <Route
           path="contacts"
           element={

@@ -8,6 +8,7 @@ const AboutMe: React.FC = () => {
   const handleScroll = () => setOffsetY(window.pageYOffset);
 
   useEffect(() => {
+    document.title = "FloatyKT";
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);

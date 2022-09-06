@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import mailLogo from "../assets/logo/email.png";
 import linkedinLogo from "../assets/logo/linkedin.png";
 import facebookLogo from "../assets/logo/facebook-app-symbol.png";
 import githubLogo from "../assets/logo/github.png";
 
 const Contacts: React.FC = () => {
+  useEffect(() => {
+    document.title = "FloatyKT · Contacts";
+  }, []);
+
   return (
     <div className="px-48 pb-10" style={{}}>
       <div className="flex-center font-header topic mb-10">Contact</div>

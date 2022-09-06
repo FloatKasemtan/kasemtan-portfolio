@@ -57,6 +57,7 @@ const Projects: React.FC = () => {
     ).then(() => {
       setIsPageLoaded(true);
     });
+    document.title = "FloatyKT · Projects";
   }, []);
 
   useEffect(() => {
