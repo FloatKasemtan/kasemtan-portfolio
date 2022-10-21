@@ -18,9 +18,9 @@ function randomColor() {
 }
 
 function generate() {
-  var deg = Math.floor(Math.random() * 360);
+  const deg = Math.floor(Math.random() * 360);
 
-  var gradient =
+  const gradient =
     "linear-gradient(" +
     deg +
     "deg, " +
@@ -35,7 +35,7 @@ function generate() {
 }
 
 const Card: React.FC<{ project: Repository }> = ({ project }) => {
-  var color = useMemo(() => generate(), []);
+  const color = useMemo(() => generate(), []);
   return (
     <a
       href={project.html_url}
@@ -45,12 +45,12 @@ const Card: React.FC<{ project: Repository }> = ({ project }) => {
         breakInside: "avoid",
         background: color,
       }}
-      className="project grid-item flex flex-col justify-between"
+      className="flex flex-col justify-between project grid-item"
     >
       <div className="text-2xl ">{project.name}</div>
-      <div className="text-base p-2">{project.description}</div>
+      <div className="p-2 text-base">{project.description}</div>
       {project.language && (
-        <div className="self-end text-xs rounded-md py-1 px-3 bg-white">
+        <div className="self-end px-3 py-1 text-xs bg-white rounded-md">
           {project.language}
         </div>
       )}
