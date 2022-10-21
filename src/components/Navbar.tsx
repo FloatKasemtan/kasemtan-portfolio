@@ -4,7 +4,7 @@ import "../styles/navbar.scss";
 import Actions from "./Navbar/Actions";
 import { useNavigate } from "react-router-dom";
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<any> = ({ ...rest }) => {
   const [colorChange, setColorchange] = useState(false);
   const { height } = useWindowDimensions();
 
@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
           ? "nav-body bg-white"
           : "nav-body bg-transparent"
       }
+      {...rest}
     >
       <div className="logo" onClick={homeHandler}>
         Floaty KT{" "}
