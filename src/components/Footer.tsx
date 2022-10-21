@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Footer: React.FC = () => {
+const Footer: React.FC<any> = ({ ...rest }) => {
   const date = new Date();
   const navigate = useNavigate();
   const homeHandler = () => {
@@ -23,9 +23,9 @@ const Footer: React.FC = () => {
     }
   };
   return (
-    <footer className="bg-slate p-10">
-      <div className=" flex flex-col md:flex-row justify-between md:items-start items-center">
-        <div className="text-white m-10 px-10 min-w-sm leading-7">
+    <footer className="p-10 bg-slate" {...rest}>
+      <div className="flex flex-col items-center justify-between md:flex-row md:items-start">
+        <div className="px-10 m-10 leading-7 text-white min-w-sm">
           <b>About</b>
           <div>
             This site created for the purpose to express my hobby, like, and
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
             obsessed with programming.
           </div>
         </div>
-        <div className="text-white m-10 px-10 min-w-sm leading-7">
+        <div className="px-10 m-10 leading-7 text-white min-w-sm">
           <b>Navigation</b>
           <div className="flex flex-col">
             <a onClick={homeHandler}>Home</a>
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="m-10 px-10 text-gray-400 mt-10 md:mt-0">
+      <div className="px-10 m-10 mt-10 text-gray-400 md:mt-0">
         <div className="mb-5">
           Copyright © {date.getFullYear()} by FloatyKT, all rights reserved.
         </div>

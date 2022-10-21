@@ -103,8 +103,8 @@ const Projects: React.FC = () => {
   }, [isPageLoaded]);
 
   return (
-    <div className="min-h-screen relative lg:px-24">
-      <div className="flex-center font-header topic">My Projects</div>
+    <div className="relative min-h-screen lg:px-24">
+      <div className="text-xl flex-center topic">My Projects</div>
       {error === "" && (
         <div className="p-10 gap-y-4 columns-1 md:columns-2 lg:columns-3 max-w-[1100px] mx-auto">
           {projectsData.map((project, i) => (
@@ -113,7 +113,7 @@ const Projects: React.FC = () => {
         </div>
       )}
       {isFetching && error == "" && Loading()}
-      {error !== "" && <div className="flex-center mt-20">{error}</div>}
+      {error !== "" && <div className="mt-20 flex-center">{error}</div>}
     </div>
   );
 };
